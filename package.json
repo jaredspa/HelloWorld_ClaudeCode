@@ -1,0 +1,9 @@
+{
+  "name": "helloworld-claudecode",
+  "version": "1.0.0",
+  "description": "A simple Node.js web server",
+  "main": "server.js",
+  "scripts": {
+    "start": "\"C:\\Program Files\\nodejs\\node.exe\" server.js"
+  }
+}
