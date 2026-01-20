@@ -19,5 +19,36 @@
 <body>
   <h1>Hello from Claude Code</h1>
   <button onclick="alert('Button clicked!')">Click Me</button>
+
+  <form id="iceCreamForm">
+    <div>
+      <label for="name">Your Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+      <label for="flavor">Favorite Ice Cream Flavor:</label>
+      <input type="text" id="flavor" name="flavor" required>
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+  <p id="message"></p>
+
+  <script>
+    document.getElementById('iceCreamForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const flavor = document.getElementById('flavor').value;
+
+      const response = await fetch('/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, flavor })
+      });
+
+      const result = await response.json();
+      document.getElementById('message').textContent = result.message;
+      e.target.reset();
+    });
+  </script>
 </body>
 </html>
